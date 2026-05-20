@@ -9,10 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        blackout: "#1A1A1A",
+        cream: "#FAFAF7",
+        "cream-dark": "#F0EDE6",
+        charcoal: "#1A1A1A",
         "flag-red": "#B31942",
-        "aged-white": "#F5F0E8",
-        "steel-gray": "#888680",
+        "warm-gray": "#9E9A93",
+        "light-border": "#E8E4DD",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
@@ -21,42 +23,32 @@ const config: Config = {
         body: ["var(--font-body)", "Arial", "Helvetica", "sans-serif"],
       },
       animation: {
-        marquee: "marquee 20s linear infinite",
-        "marquee-reverse": "marquee-reverse 20s linear infinite",
-        "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+        marquee: "marquee 25s linear infinite",
+        "fade-in-up": "fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "fade-in": "fadeIn 1s ease-out forwards",
-        "pulse-glow": "pulseGlow 2s ease-in-out infinite",
-        "slide-in-left": "slideInLeft 0.6s ease-out forwards",
-        "slide-in-right": "slideInRight 0.6s ease-out forwards",
+        "slide-up-stagger": "slideUpStagger 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "width-expand": "widthExpand 1s cubic-bezier(0.16, 1, 0.3, 1) forwards",
       },
       keyframes: {
         marquee: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
         },
-        "marquee-reverse": {
-          "0%": { transform: "translateX(-50%)" },
-          "100%": { transform: "translateX(0%)" },
-        },
         fadeInUp: {
-          "0%": { opacity: "0", transform: "translateY(40px)" },
+          "0%": { opacity: "0", transform: "translateY(50px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
-        pulseGlow: {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(179, 25, 66, 0.3)" },
-          "50%": { boxShadow: "0 0 40px rgba(179, 25, 66, 0.6)" },
+        slideUpStagger: {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        slideInLeft: {
-          "0%": { opacity: "0", transform: "translateX(-60px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        slideInRight: {
-          "0%": { opacity: "0", transform: "translateX(60px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
+        widthExpand: {
+          "0%": { width: "0%" },
+          "100%": { width: "100%" },
         },
       },
     },

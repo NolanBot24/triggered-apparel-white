@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${oswald.variable} ${inter.variable}`}>
-      <body className="font-body antialiased grain-overlay">
+      <body className="font-body antialiased bg-cream">
         <Header />
         <main>{children}</main>
         <Footer />

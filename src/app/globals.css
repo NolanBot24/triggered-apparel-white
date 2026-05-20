@@ -3,12 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #1A1A1A;
-  --foreground: #F5F0E8;
+  --background: #FAFAF7;
+  --foreground: #1A1A1A;
   --flag-red: #B31942;
-  --aged-white: #F5F0E8;
-  --steel-gray: #888680;
-  --blackout: #1A1A1A;
+  --cream: #FAFAF7;
+  --cream-dark: #F0EDE6;
+  --charcoal: #1A1A1A;
+  --warm-gray: #9E9A93;
+  --light-border: #E8E4DD;
 }
 
 /* ═══════════════════════════════════════════
@@ -34,8 +36,8 @@ body {
 }
 
 ::selection {
-  background: var(--flag-red);
-  color: var(--aged-white);
+  background: var(--charcoal);
+  color: var(--cream);
 }
 
 /* ═══════════════════════════════════════════
@@ -43,20 +45,20 @@ body {
    ═══════════════════════════════════════════ */
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #111;
+  background: var(--cream);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--flag-red);
-  border-radius: 4px;
+  background: var(--charcoal);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #d42150;
+  background: #333;
 }
 
 /* ═══════════════════════════════════════════
@@ -70,23 +72,6 @@ body {
 }
 
 /* ═══════════════════════════════════════════
-   NOISE / GRAIN TEXTURE OVERLAY
-   ═══════════════════════════════════════════ */
-
-.grain-overlay::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-/* ═══════════════════════════════════════════
    MARQUEE BANNER
    ═══════════════════════════════════════════ */
 
@@ -96,25 +81,17 @@ body {
 }
 
 /* ═══════════════════════════════════════════
-   HERO PARALLAX TEXT SHADOW
-   ═══════════════════════════════════════════ */
-
-.hero-text-shadow {
-  text-shadow: 0 0 80px rgba(179, 25, 66, 0.15), 0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
-/* ═══════════════════════════════════════════
-   PRODUCT CARD HOVER EFFECTS
+   PRODUCT CARD HOVER
    ═══════════════════════════════════════════ */
 
 .product-card {
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(179, 25, 66, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
 /* ═══════════════════════════════════════════
@@ -124,46 +101,79 @@ body {
 .cta-button {
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cta-button::before {
+.cta-button::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: left 0.5s ease;
+  height: 2px;
+  background: var(--flag-red);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cta-button:hover::before {
-  left: 100%;
+.cta-button:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .cta-button:hover {
-  box-shadow: 0 0 30px rgba(179, 25, 66, 0.5), 0 0 60px rgba(179, 25, 66, 0.2);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 /* ═══════════════════════════════════════════
-   DIAGONAL STRIPE PATTERN
+   NAV LINK UNDERLINE ANIMATION
    ═══════════════════════════════════════════ */
 
-.diagonal-stripes {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 10px,
-    rgba(179, 25, 66, 0.05) 10px,
-    rgba(179, 25, 66, 0.05) 20px
-  );
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--charcoal);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════ */
+
+.glass-header {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(250, 250, 247, 0.9);
+  border-bottom: 1px solid var(--light-border);
+}
+
+/* ═══════════════════════════════════════════
+   RED ACCENT LINE
+   ═══════════════════════════════════════════ */
+
+.red-accent {
+  width: 40px;
+  height: 2px;
+  background: var(--flag-red);
+}
+
+.red-accent-wide {
+  width: 60px;
+  height: 2px;
+  background: var(--flag-red);
 }
 
 /* ═══════════════════════════════════════════
@@ -178,35 +188,11 @@ body {
 .stagger-6 { animation-delay: 0.6s; }
 
 /* ═══════════════════════════════════════════
-   NAV LINK UNDERLINE ANIMATION
+   EDITORIAL DIVIDER
    ═══════════════════════════════════════════ */
 
-.nav-link {
-  position: relative;
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--flag-red);
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
+.editorial-divider {
   width: 100%;
-}
-
-/* ═══════════════════════════════════════════
-   HEADER GLASS EFFECT
-   ═══════════════════════════════════════════ */
-
-.glass-header {
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  background: rgba(26, 26, 26, 0.85);
-  border-bottom: 1px solid rgba(136, 134, 128, 0.15);
+  height: 1px;
+  background: var(--light-border);
 }
