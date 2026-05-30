@@ -33,19 +33,19 @@ declare module "node:sqlite" {
     /**
      * Executes the prepared statement and returns all matching rows.
      */
-    all(namedParams?: Record<string, any>): any[];
-    all(...positionalParams: any[]): any[];
+    all(namedParams?: Record<string, unknown>): unknown[];
+    all(...positionalParams: unknown[]): unknown[];
 
     /**
      * Executes the prepared statement and returns the first matching row.
      */
-    get(namedParams?: Record<string, any>): any;
-    get(...positionalParams: any[]): any;
+    get(namedParams?: Record<string, unknown>): unknown;
+    get(...positionalParams: unknown[]): unknown;
 
     /**
      * Executes the prepared statement.
      */
-    run(namedParams?: Record<string, any>): { changes: number; lastInsertRowid: number | bigint };
-    run(...positionalParams: any[]): { changes: number; lastInsertRowid: number | bigint };
+    run(namedParams?: Record<string, unknown>): { changes: number; lastInsertRowid: number | bigint };
+    run(...positionalParams: unknown[]): { changes: number; lastInsertRowid: number | bigint };
   }
 }
