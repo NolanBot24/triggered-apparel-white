@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Anton } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -15,6 +16,18 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-body",
   weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const authorBold = localFont({
+  src: "./fonts/Author-Bold.otf",
+  variable: "--font-author-bold",
+  display: "swap",
+});
+
+const author = localFont({
+  src: "./fonts/Author-Regular.otf",
+  variable: "--font-author",
   display: "swap",
 });
 
@@ -42,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${anton.variable} ${inter.variable}`}>
+    <html lang="en" className={`${anton.variable} ${inter.variable} ${authorBold.variable} ${author.variable}`}>
       <body className="font-body antialiased bg-cream">
         <Header />
         <main>{children}</main>

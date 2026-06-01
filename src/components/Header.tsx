@@ -30,13 +30,18 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" id="logo-link" className="group">
-          <span className="font-heading text-charcoal text-lg tracking-[0.3em] font-bold leading-none">
-            TRIGGERED
+        <Link href="/" id="logo-link" className="group flex items-center gap-3">
+          <span className="font-author-bold text-charcoal text-4xl leading-none tracking-tighter">
+            TRG
           </span>
-          <span className="hidden sm:inline font-heading text-warm-gray text-lg tracking-[0.3em] font-bold ml-2">
-            APPAREL
-          </span>
+          <div className="flex flex-col justify-center">
+            <span className="font-author text-charcoal text-sm tracking-[0.3em] leading-none">
+              TRIGGERED
+            </span>
+            <span className="font-author text-warm-gray text-[10px] tracking-[0.3em] leading-none">
+              APPAREL
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}

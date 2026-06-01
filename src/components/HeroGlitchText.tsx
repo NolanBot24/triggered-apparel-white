@@ -48,7 +48,7 @@ export default function HeroGlitchText() {
         </svg>
 
         {/* Text Block */}
-        <h1 className="hero-distressed-text font-heading text-charcoal text-[3rem] sm:text-[4.5rem] md:text-[6.5rem] lg:text-[8.5rem] xl:text-[10rem] font-bold leading-[0.88] tracking-[-0.02em] uppercase">
+        <h1 className="hero-distressed-text font-heading text-charcoal text-[3rem] sm:text-[4.5rem] md:text-[6.5rem] lg:text-[8.5rem] xl:text-[10rem] font-bold leading-[0.88] tracking-normal uppercase">
           <span className="block">Unapolo-</span>
           <span className="block">getically</span>
           <span className="block">American</span>
@@ -97,7 +97,7 @@ export default function HeroGlitchText() {
         {/* Glitch Ghost Layers */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <h1
-            className="hero-distressed-text font-heading text-flag-red/[0.06] text-[3rem] sm:text-[4.5rem] md:text-[6.5rem] lg:text-[8.5rem] xl:text-[10rem] font-bold leading-[0.88] tracking-[-0.02em] uppercase"
+            className="hero-distressed-text font-heading text-flag-red/[0.06] text-[3rem] sm:text-[4.5rem] md:text-[6.5rem] lg:text-[8.5rem] xl:text-[10rem] font-bold leading-[0.88] tracking-normal uppercase"
             style={{ transform: "translate(3px, -1px)" }}
             aria-hidden="true"
           >

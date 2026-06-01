@@ -10,16 +10,18 @@ const config: Config = {
     extend: {
       colors: {
         cream: "#FAFAF7",
-        "cream-dark": "#F0EDE6",
+        "cream-dark": "#888680",
         charcoal: "#1A1A1A",
         "flag-red": "#B31942",
         "warm-gray": "#9E9A93",
-        "light-border": "#E8E4DD",
+        "light-border": "#888680",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "Impact", "Arial Black", "sans-serif"],
+        "author-bold": ["var(--font-author-bold)", "Impact", "Arial Black", "sans-serif"],
+        author: ["var(--font-author)", "Arial", "Helvetica", "sans-serif"],
         body: ["var(--font-body)", "Arial", "Helvetica", "sans-serif"],
       },
       animation: {

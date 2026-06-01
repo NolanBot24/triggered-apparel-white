@@ -62,7 +62,7 @@ export default function Home() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-heading text-charcoal text-7xl sm:text-8xl md:text-[10rem] lg:text-[13rem] font-bold tracking-[-0.05em] leading-[0.85] mb-4 animate-fade-in-up">
+          <h1 className="font-heading text-charcoal text-7xl sm:text-8xl md:text-[10rem] lg:text-[13rem] font-bold tracking-normal leading-[0.85] mb-4 animate-fade-in-up">
             BUILT
             <br />
             <span className="relative inline-block">
