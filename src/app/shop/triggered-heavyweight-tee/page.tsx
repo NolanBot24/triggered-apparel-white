@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 
+const MOCKUP_BASE = (cid: string) =>
+  `https://cdn.customcat.com/DynamicImageHandler.ashx?view=1&ndz=1&cid=${cid}&did=194&logo=96B401A7-AB5D-1AEA-A399BF106CDFF723&photo=1&highres=1&designOriginY=top&designScaleMltplr=0&cc=1&pset=99&pw=263.14452&ph=276.51744&px=0&py=168.04393&pbc=&tt=&bt=&tn=&tm=&format=jpg`;
+
 const PRODUCT = {
   id: "triggered-heavyweight-tee",
   customcatProductId: "1460-108905968",
@@ -9,10 +12,10 @@ const PRODUCT = {
   description:
     "Built heavier. Garment-dyed for a worn-in feel that gets better over time. This is the shirt you reach for when you mean it.",
   colors: [
-    { name: "Black", hex: "#1a1a1a" },
-    { name: "White", hex: "#f5f5f5", border: true },
-    { name: "Grey", hex: "#888888" },
-    { name: "Graphite", hex: "#4a4a4a" },
+    { name: "Black", hex: "#1a1a1a", cid: "15181" },
+    { name: "White", hex: "#f5f5f5", cid: "15182", border: true },
+    { name: "Grey", hex: "#888888", cid: "18369" },
+    { name: "Graphite", hex: "#4a4a4a", cid: "18376" },
   ],
   sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
   pricing: {
@@ -48,7 +51,7 @@ const PRODUCT = {
 };
 
 export default function ProductPage() {
-  const [selectedColor, setSelectedColor] = useState("Black");
+  const [selectedColor, setSelectedColor] = useState(PRODUCT.colors[0]);
   const [selectedSize, setSelectedSize] = useState("");
   const [adding, setAdding] = useState(false);
   const [added, setAdded] = useState(false);
@@ -58,9 +61,10 @@ export default function ProductPage() {
     ? PRODUCT.pricing[selectedSize]
     : PRODUCT.pricing["S"];
 
-  const sku = selectedColor && selectedSize
-    ? PRODUCT.skus[`${selectedColor}-${selectedSize}`]
-    : null;
+  const sku =
+    selectedSize
+      ? PRODUCT.skus[`${selectedColor.name}-${selectedSize}`]
+      : null;
 
   async function handleAddToCart() {
     if (!selectedSize) {
@@ -83,16 +87,12 @@ export default function ProductPage() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
-          {/* IMAGE */}
-          <div className="relative aspect-[3/4] bg-cream-dark border border-light-border flex items-center justify-center">
-            <span className="font-heading text-9xl font-bold text-charcoal/[0.04] select-none">
-              T
-            </span>
-            <div
-              className="absolute bottom-4 left-4 w-3 h-3 rounded-full border border-light-border"
-              style={{
-                background: PRODUCT.colors.find(c => c.name === selectedColor)?.hex,
-              }}
+          {/* IMAGE — swaps per color */}
+          <div className="relative aspect-[3/4] bg-cream-dark border border-light-border overflow-hidden">
+            <img
+              src={MOCKUP_BASE(selectedColor.cid)}
+              alt={`Triggered Heavyweight Tee in ${selectedColor.name}`}
+              className="w-full h-full object-cover"
             />
           </div>
 
@@ -123,16 +123,16 @@ export default function ProductPage() {
             {/* COLOR */}
             <div className="mb-8">
               <p className="font-body text-[10px] tracking-[0.25em] uppercase text-charcoal mb-3">
-                Color — <span className="text-warm-gray">{selectedColor}</span>
+                Color — <span className="text-warm-gray">{selectedColor.name}</span>
               </p>
               <div className="flex gap-3">
                 {PRODUCT.colors.map((color) => (
                   <button
                     key={color.name}
-                    onClick={() => setSelectedColor(color.name)}
+                    onClick={() => setSelectedColor(color)}
                     title={color.name}
                     className={`w-8 h-8 rounded-full transition-all duration-200 ${
-                      selectedColor === color.name
+                      selectedColor.name === color.name
                         ? "ring-2 ring-offset-2 ring-charcoal"
                         : "hover:ring-1 hover:ring-offset-1 hover:ring-charcoal/40"
                     }`}
@@ -170,7 +170,7 @@ export default function ProductPage() {
               )}
             </div>
 
-            {/* SKU DEBUG (remove before launch) */}
+            {/* SKU DEBUG — remove before launch */}
             {sku && (
               <p className="font-mono text-[10px] text-warm-gray/50 mb-4">
                 SKU: {sku}
